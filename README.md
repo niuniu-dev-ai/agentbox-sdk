@@ -75,8 +75,8 @@ npm run release:check:sdk-js
 Run Python checks:
 
 ```bash
-python3 -m unittest discover packages/sdk-python/tests
-python3 -m pip wheel packages/sdk-python --no-deps --wheel-dir /tmp/niuniu-agentbox-python-wheel
+npm run test:sdk-python
+npm run release:check:sdk-python
 ```
 
 ## Support
@@ -87,9 +87,9 @@ Please do not open public issues for security reports; see
 
 ## Releases
 
-SDK versions are published from this repository after npm and PyPI trusted
-publishers are configured for `niuniu-dev-ai/agentbox-sdk`. GitHub releases use
-tags such as `v0.1.7` and match the npm/PyPI package versions.
+SDK versions are published from this repository with npm and PyPI trusted
+publishing. GitHub releases use tags such as `v0.1.7` and match the npm/PyPI
+package versions.
 
 ## License
 
