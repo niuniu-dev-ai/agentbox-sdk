@@ -1,6 +1,6 @@
 {
   "name": "@niuniu-ai/agentbox",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "TypeScript SDK for AgentBox private agent state and scoped sharing.",
   "license": "MIT",
   "type": "module",
