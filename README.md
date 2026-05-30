@@ -59,9 +59,9 @@ print(health["data"]["status"])
 The health endpoint is public; the placeholder credentials above satisfy the
 SDK client constructor and are not sent with `health()`.
 
-Creating production boxes requires an OIDC identity token from a provider
-configured by AgentBox, such as Google. See the package READMEs for complete
-examples:
+Public discovery and health checks do not need credentials. Creating boxes or
+writing private state in production requires an accepted AgentBox auth scheme,
+such as Google OIDC. See the package READMEs for complete examples:
 
 - [TypeScript SDK](./packages/sdk-js/README.md)
 - [Python SDK](./packages/sdk-python/README.md)
