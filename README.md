@@ -30,6 +30,14 @@ import { discoverAgentBox } from "@niuniu-ai/agentbox";
 const service = await discoverAgentBox({
   baseUrl: "https://agentbox.niuniu.dev"
 });
+
+const agentbox = service.createClient({
+  actor: "quickstart",
+  token: "unused-for-health"
+});
+
+const health = await agentbox.health();
+console.log(health.data.status);
 ```
 
 Python:
@@ -38,7 +46,18 @@ Python:
 from agentbox import discover_agentbox
 
 service = discover_agentbox(base_url="https://agentbox.niuniu.dev")
+
+agentbox = service.create_client(
+    actor="quickstart",
+    token="unused-for-health",
+)
+
+health = agentbox.health()
+print(health["data"]["status"])
 ```
+
+The health endpoint is public; the placeholder credentials above satisfy the
+SDK client constructor and are not sent with `health()`.
 
 Creating production boxes requires an OIDC identity token from a provider
 configured by AgentBox, such as Google. See the package READMEs for complete
