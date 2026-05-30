@@ -30,6 +30,14 @@ import { discoverAgentBox } from "@niuniu-ai/agentbox";
 const service = await discoverAgentBox({
   baseUrl: "https://agentbox.niuniu.dev"
 });
+
+const agentbox = service.createClient({
+  actor: "quickstart",
+  token: "unused-for-health"
+});
+
+const health = await agentbox.health();
+console.log(health.data.status);
 ```
 
 Python:
@@ -38,10 +46,23 @@ Python:
 from agentbox import discover_agentbox
 
 service = discover_agentbox(base_url="https://agentbox.niuniu.dev")
+
+agentbox = service.create_client(
+    actor="quickstart",
+    token="unused-for-health",
+)
+
+health = agentbox.health()
+print(health["data"]["status"])
 ```
 
-Creating production boxes requires an OIDC identity token from a provider
-configured by AgentBox, such as Google. See the package READMEs for complete
+The health endpoint is public; the placeholder credentials above satisfy the
+SDK client constructor and are not sent with `health()`.
+
+Public discovery and health checks do not need credentials. Creating boxes or
+writing private state in production requires an accepted AgentBox identity path,
+such as Google OIDC for direct HTTPS clients or native Pilot identity supplied
+by a Pilot-aware runtime/adapter. See the package READMEs for complete
 examples:
 
 - [TypeScript SDK](./packages/sdk-js/README.md)
@@ -75,8 +96,8 @@ npm run release:check:sdk-js
 Run Python checks:
 
 ```bash
-python3 -m unittest discover packages/sdk-python/tests
-python3 -m pip wheel packages/sdk-python --no-deps --wheel-dir /tmp/niuniu-agentbox-python-wheel
+npm run test:sdk-python
+npm run release:check:sdk-python
 ```
 
 ## Support
@@ -87,9 +108,9 @@ Please do not open public issues for security reports; see
 
 ## Releases
 
-SDK versions are published from this repository after npm and PyPI trusted
-publishers are configured for `niuniu-dev-ai/agentbox-sdk`. GitHub releases use
-tags such as `v0.1.7` and match the npm/PyPI package versions.
+SDK versions are published from this repository with npm and PyPI trusted
+publishing. GitHub releases use tags such as `v0.1.7` and match the npm/PyPI
+package versions.
 
 ## License
 

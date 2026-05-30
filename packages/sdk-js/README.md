@@ -15,10 +15,14 @@ npm install @niuniu-ai/agentbox
 
 ## Production Auth
 
-Creating boxes in production requires an OIDC identity token from a provider
-configured by AgentBox, such as Google. Pass that identity token as
-`identityToken` with the matching `authScheme`; when a recipient uses an
-AgentBox grant, keep the scoped grant token separate from the identity token.
+Creating boxes in production requires an accepted AgentBox identity path.
+Direct HTTPS clients can pass an OIDC identity token from a provider configured
+by AgentBox, such as Google, as `identityToken` with the matching `authScheme`.
+Native Pilot callers rely on a Pilot-aware runtime or the AgentBox Pilot
+adapter to establish Pilot identity before requests reach AgentBox; SDK
+application code should not set `authScheme: "pilot"` or handcraft Pilot
+headers. When a recipient uses an AgentBox grant, keep the scoped grant token
+separate from the identity token or Pilot identity.
 
 ## First Private Box With Google OIDC
 
@@ -131,10 +135,12 @@ const manifest = await writer.getManifest({
 
 ## Auth Modes
 
-AgentBox clients authenticate with OIDC identity tokens. Grant clients can carry
-the AgentBox scoped grant separately with `grantToken`, or use
+Direct AgentBox clients authenticate with OIDC identity tokens. Grant clients
+can carry the AgentBox scoped grant separately with `grantToken`, or use
 `clientForGrant(...)` to derive a least-privilege client from a grant response.
-Pass `authScheme` for named providers such as `google`.
+Pass `authScheme` for named providers such as `google`. Native Pilot identity
+is handled by the runtime/adapter boundary rather than a separate SDK auth
+mode.
 
 ## API Reference
 
