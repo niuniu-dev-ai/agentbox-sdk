@@ -1,0 +1,51 @@
+{
+  "name": "@niuniu-ai/agentbox",
+  "version": "0.1.6",
+  "description": "TypeScript SDK for AgentBox private agent state and scoped sharing.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://github.com/niuniu-dev-ai/agentbox-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niuniu-dev-ai/agentbox-sdk.git",
+    "directory": "packages/sdk-js"
+  },
+  "bugs": {
+    "url": "https://github.com/niuniu-dev-ai/agentbox-sdk/issues"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "agentbox",
+    "agents",
+    "sdk",
+    "a2a",
+    "agent-memory"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map",
+    "dist/**/*.js",
+    "dist/**/*.js.map",
+    "src/**/*.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "pack:dry-run": "npm pack --dry-run"
+  }
+}

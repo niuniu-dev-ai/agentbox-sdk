@@ -1,0 +1,24 @@
+{
+  "name": "agentbox-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Public TypeScript and Python SDKs for AgentBox.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "release:check:sdk-js": "npm run build --workspace @niuniu-ai/agentbox && npm pack --workspace @niuniu-ai/agentbox --dry-run",
+    "release:check:sdk-python": "rm -rf /tmp/niuniu-agentbox-python-wheel && python3 -m pip wheel packages/sdk-python --no-deps --wheel-dir /tmp/niuniu-agentbox-python-wheel",
+    "test:sdk-python": "PYTHONPATH=packages/sdk-python/src python3 -m unittest discover packages/sdk-python/tests",
+    "typecheck": "tsc -b --pretty false"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.19",
+    "typescript": "^5.8.3"
+  }
+}
