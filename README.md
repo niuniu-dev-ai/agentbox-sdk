@@ -47,6 +47,7 @@ examples:
 - [TypeScript SDK](./packages/sdk-js/README.md)
 - [Python SDK](./packages/sdk-python/README.md)
 - [Cross-runtime SDK reference](./docs/sdk-reference.md)
+- [SDK release runbook](./docs/sdk-release.md)
 
 ## Repository Layout
 
@@ -83,6 +84,12 @@ python3 -m pip wheel packages/sdk-python --no-deps --wheel-dir /tmp/niuniu-agent
 Use GitHub issues for SDK bugs, install problems, and documentation confusion.
 Please do not open public issues for security reports; see
 [SECURITY.md](./SECURITY.md).
+
+## Releases
+
+SDK versions are published from this repository after npm and PyPI trusted
+publishers are configured for `niuniu-dev-ai/agentbox-sdk`. GitHub releases use
+tags such as `v0.1.7` and match the npm/PyPI package versions.
 
 ## License
 
